@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/txtVCName"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:paddingTop="15dp"
+        android:textColor="#429ed7"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/txtVCAddress"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:paddingTop="15dp"
+        android:textColor="#020202"/>
+    <TextView
+        android:id="@+id/txtVMobile"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:paddingTop="15dp"
+        android:textColor="#020202"/>
+    <TextView
+        android:id="@+id/txtVDeposit"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:paddingTop="15dp"
+        android:textColor="#020202"/>
+</LinearLayout>

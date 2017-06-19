@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:weightSum="1">
+
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCustomersinTrans"
+            android:background="@drawable/background_round_corner_edittext"
+            android:text="Customers"
+            android:layout_weight="0.31" />
+
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnTransactioninTrans"
+            android:text="Transaction"
+            android:background="@drawable/background_round_corner_edittext"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.31" />
+
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnLogoutinTras"
+            android:text="Logout"
+            android:background="@drawable/background_round_corner_edittext"
+            android:layout_weight="0.31" />
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="119dp"
+                android:layout_height="match_parent"
+                android:text="Customer"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_width="83dp"
+                android:layout_height="match_parent"
+                android:text="Balance"
+                android:textColor="#000" />
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:text="R-Jar"
+                android:textColor="#000" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="R-Bottle"
+                android:textColor="#000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txtCName"
+                android:layout_width="119dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/txtBalance"
+                android:layout_width="83dp"
+                android:layout_height="match_parent"
+                android:textColor="#000" />
+            <TextView
+                android:id="@+id/txtRemainJar"
+                android:layout_width="73dp"
+                android:layout_height="match_parent"
+                android:textColor="#000" />
+            <TextView
+                android:id="@+id/txtRemainBottle"
+                android:layout_width="89dp"
+                android:layout_height="wrap_content"
+                android:textColor="#000" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/Addorupdatecust"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Transactions"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:singleLine="true"
+            android:textColor="@color/abc_primary_text_material_light"
+            android:layout_alignWithParentIfMissing="true"
+            android:typeface="serif"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:layout_weight="0.17" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:onClick="setDate"
+                android:text="@string/date_button_set" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/button1"
+                android:layout_marginTop="10dp"
+                android:text="@string/date_selected"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_below="@+id/button1" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/SelectJartype"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Jar Type"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:singleLine="true"
+                android:textColor="@color/abc_primary_text_material_light"
+                android:layout_alignWithParentIfMissing="true"
+                android:typeface="serif"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingLeft="10dp"
+                android:gravity="left" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/radioBtnGroupJarType"
+                android:weightSum="1"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="24dp">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jar"
+                    android:id="@+id/rbtJar"
+                    android:checked="true"
+                    android:layout_below="@+id/radioGroup"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bottle"
+                    android:id="@+id/rbtBottle"
+                    android:checked="false"
+                    android:layout_below="@+id/radioGroup"
+                    android:layout_toRightOf="@+id/rbtJar"
+                    android:layout_toEndOf="@+id/rbtJar" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_width="187dp"
+                android:layout_height="match_parent"
+                android:hint="Quantity"
+                android:id="@+id/edtQty"
+                android:inputType="numberDecimal"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                />
+
+            <EditText
+                android:layout_width="188dp"
+                android:layout_height="match_parent"
+                android:id="@+id/edtRate"
+                android:hint="Rate"
+                android:inputType="numberDecimal"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/edtQty"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+            <TextView
+                android:id="@+id/SelectPaytype"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Payment Type"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:singleLine="true"
+                android:textColor="@color/abc_primary_text_material_light"
+                android:layout_alignWithParentIfMissing="true"
+                android:typeface="serif"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingLeft="10dp"
+                android:gravity="left" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/radioPaymentType"
+                android:weightSum="1"
+                android:text="payment Type"
+                android:layout_alignParentTop="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="24dp"
+                >
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cash"
+                    android:id="@+id/rbtCash"
+                    android:checked="true"
+                    android:layout_below="@+id/edtRate"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Credit"
+                    android:id="@+id/rbtCredit"
+                    android:checked="false"
+                    android:layout_alignTop="@+id/rbtCash" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="191dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtPaymentReceived"
+                android:hint="Pay Received"
+                android:inputType="number"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"/>
+
+            <EditText
+                android:layout_width="193dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtPaymentBalance"
+                android:hint="Pay Balance"
+                android:inputType="number"
+                android:layout_alignTop="@+id/edtPaymentReceived"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+            <TextView
+                android:id="@+id/SelectReturnJartype"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Return-Jar Type"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:singleLine="true"
+                android:textColor="@color/abc_primary_text_material_light"
+                android:layout_alignWithParentIfMissing="true"
+                android:typeface="serif"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingLeft="10dp"
+                android:gravity="left" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jar"
+                android:id="@+id/rbtRtnJar"
+                android:checked="true"
+                android:layout_below="@+id/edtRate" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bottle"
+                android:id="@+id/rbtRtnBottle"
+                android:checked="false"
+                android:layout_alignTop="@+id/rbtCash" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/radioReturnType"
+                android:text="Return Type"
+                android:weightSum="1"
+                android:layout_alignParentTop="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="24dp">
+
+            </RadioGroup>
+            <EditText
+                android:layout_width="94dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtReturnQty"
+                android:hint="Qty"
+                android:inputType="number"
+                android:layout_below="@+id/edtPaymentBalance"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+            <Button
+                android:layout_width="156dp"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:textAlignment="center"
+                android:id="@+id/btnTransactionSave"
+                android:layout_below="@+id/edtReturnQty"
+                android:background="@drawable/background_round_corner_edittext"
+                android:layout_marginLeft="24dp" />
+
+            <Button
+                android:layout_width="156dp"
+                android:layout_height="wrap_content"
+                android:text="Clear"
+                android:textAlignment="center"
+                android:id="@+id/btnTransClear"
+                android:layout_below="@+id/edtReturnQty"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/background_round_corner_edittext"
+                android:layout_marginLeft="24dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

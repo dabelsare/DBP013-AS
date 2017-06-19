@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.smp.aquasmart.Transaction_List">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/textViewNameHeader"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="Customer"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/textViewBalanceHeader"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="Balance"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:textColor="#000" />
+        <TextView
+            android:id="@+id/textViewRemainJar"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:text="R-Jar"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:textColor="#000" />
+        <TextView
+            android:id="@+id/textViewRemainBottle"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="R-Bottle"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:textColor="#000" />
+    </LinearLayout>
+
+
+    <include layout="@layout/content_transaction__list" />
+
+</android.support.design.widget.CoordinatorLayout>

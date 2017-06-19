@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name" textStyle="bold" typeface="serif">AquaSmart</string>
+    <!--<string name="title_activity_auacustomers">Auacustomers</string>-->
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="android_studio_android_com">android.studio@android.com</string>
+    <string name="title_activity_transaction">Transaction</string>
+
+    <string name="one">ONE</string>
+    <string name="two">TWO</string>
+    <string name="three">THREE</string>
+    <string name="title_activity_transaction__list">Transaction_List</string>
+
+    <string name="date_button_set">Set Date</string>
+    <string name="date_selected"></string>
+    <string name="title_activity_notification">Notification</string>
+</resources>

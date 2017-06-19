@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.smp.aquasmart.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:weightSum="1"
+        android:id="@+id/linearLayout3">
+
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCustomersAdd"
+            android:background="@drawable/background_round_corner_edittext"
+            android:text="Add Customer"
+            android:layout_weight="0.31" />
+
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnTransactionInList"
+            android:text="Transaction"
+            android:background="@drawable/background_round_corner_edittext"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.31" />
+
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnLogoutInList"
+            android:text="Logout"
+            android:background="@drawable/background_round_corner_edittext"
+            android:layout_weight="0.31" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="*Long press click for customer update"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="100dp"
+        android:weightSum="1"
+        android:id="@+id/linearLayout2">
+
+        <TextView
+            android:id="@+id/lblCname"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Customer"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:textColor="#000"
+            android:layout_weight="0.27" />
+
+        <TextView
+            android:id="@+id/lblCAddress"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textColor="#000" />
+        <TextView
+            android:id="@+id/lblCMobile"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Moblie"
+            android:textColor="#000" />
+        <TextView
+            android:id="@+id/lblCDeposit"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Deposit"
+            android:textColor="#000"
+            />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listCustomer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/material_blue_grey_800"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:dividerHeight="1dp"
+        android:layout_below="@+id/linearLayout2">
+    </ListView>
+</RelativeLayout>

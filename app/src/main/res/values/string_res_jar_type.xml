@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="jar_type_array">
+    <item>Jar</item>
+    <item>Bottle</item>
+</string-array>
+</resources>
