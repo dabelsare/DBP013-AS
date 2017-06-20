@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -19,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-
+import android.text.TextWatcher;
 
 public class MainActivity extends Activity {
     Button CustAdd,Trans,LogOt;
@@ -27,8 +28,8 @@ public class MainActivity extends Activity {
 
     //ProgressBar proCustomerList;
     List<String> listString = new ArrayList<String>();
-    ArrayAdapter<String> arrayAdapter;
-    EditText editText;
+    ArrayAdapter<String> adapter;
+    EditText inputSearch;
     String serverURL="http://smartbizit.com/aquasmart/customers.php";
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -64,6 +65,7 @@ public class MainActivity extends Activity {
             }
         });
 
+        inputSearch=(EditText) findViewById(R.id.inputSearch);
     }
 
     private class GetHttpResponse extends AsyncTask<Void, Void, Void>
@@ -148,6 +150,23 @@ public class MainActivity extends Activity {
                 CustomAdapterCustomerList cAcL = new CustomAdapterCustomerList(customerList, context);
                 listCustomer.setAdapter(cAcL);
 
+                inputSearch.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                        //
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        //MainActivity.this.adapter.getFilter().filter(s);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
                 listCustomer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -174,9 +193,7 @@ public class MainActivity extends Activity {
                         return true;
                     }
                 });
-
             }
         }
     }
-
 }
