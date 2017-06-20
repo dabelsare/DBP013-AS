@@ -25,12 +25,14 @@ import android.text.TextWatcher;
 public class MainActivity extends Activity {
     Button CustAdd,Trans,LogOt;
     ListView listCustomer;
+
     List<Customer> customerList;
 
     //    ArrayAdapter<String> adapter;
     EditText inputSearch;
     String serverURL="http://smartbizit.com/aquasmart/customers.php";
 
+    private CustomAdapterCustomerList mCustomAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -43,6 +45,7 @@ public class MainActivity extends Activity {
         LogOt=(Button)findViewById(R.id.btnLogoutInList);
         listCustomer = (ListView)findViewById(R.id.listCustomer);
         inputSearch=(EditText) findViewById(R.id.inputSearch);
+        listCustomer.setTextFilterEnabled(true);
 
         new GetHttpResponse(this).execute();
 
@@ -77,7 +80,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //MainActivity.this.adapter.getFilter().filter(s);
+                mCustomAdapter.getFilter().filter(s);
             }
 
             @Override
@@ -85,7 +88,6 @@ public class MainActivity extends Activity {
 
             }
         });
-
     }
 
     private class GetHttpResponse extends AsyncTask<Void, Void, Void>
@@ -166,8 +168,11 @@ public class MainActivity extends Activity {
             listCustomer.setVisibility(View.VISIBLE);
             if(customerList != null)
             {
-                CustomAdapterCustomerList cAcL = new CustomAdapterCustomerList(customerList, context);
-                listCustomer.setAdapter(cAcL);
+//                CustomAdapterCustomerList cAcL = new CustomAdapterCustomerList(customerList, context);
+//                listCustomer.setAdapter(cAcL);
+
+                mCustomAdapter = new CustomAdapterCustomerList(customerList,context);
+                listCustomer.setAdapter(mCustomAdapter);
 
                 listCustomer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
