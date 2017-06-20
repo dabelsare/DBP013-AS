@@ -25,12 +25,13 @@ import android.text.TextWatcher;
 public class MainActivity extends Activity {
     Button CustAdd,Trans,LogOt;
     ListView listCustomer;
+    List<Customer> customerList;
 
-    //ProgressBar proCustomerList;
-    List<String> listString = new ArrayList<String>();
-    ArrayAdapter<String> adapter;
+    //    ArrayAdapter<String> adapter;
     EditText inputSearch;
     String serverURL="http://smartbizit.com/aquasmart/customers.php";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -41,6 +42,8 @@ public class MainActivity extends Activity {
         Trans=(Button)findViewById(R.id.btnTransactionInList);
         LogOt=(Button)findViewById(R.id.btnLogoutInList);
         listCustomer = (ListView)findViewById(R.id.listCustomer);
+        inputSearch=(EditText) findViewById(R.id.inputSearch);
+
         new GetHttpResponse(this).execute();
 
         CustAdd.setOnClickListener(new View.OnClickListener() {
@@ -65,14 +68,30 @@ public class MainActivity extends Activity {
             }
         });
 
-        inputSearch=(EditText) findViewById(R.id.inputSearch);
+
+        inputSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //MainActivity.this.adapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
     }
 
     private class GetHttpResponse extends AsyncTask<Void, Void, Void>
     {
         private Context context;
         String result;
-        List<Customer> customerList;
         public GetHttpResponse(Context context)
         {
             this.context = context;
@@ -103,7 +122,7 @@ public class MainActivity extends Activity {
                             jsonArray = new JSONArray(result);
 
                             JSONObject object;
-                            JSONArray array;
+//                            JSONArray array;
                             Customer customer;
                             customerList = new ArrayList<Customer>();
                             for(int i=0; i<jsonArray.length(); i++)
@@ -149,23 +168,6 @@ public class MainActivity extends Activity {
             {
                 CustomAdapterCustomerList cAcL = new CustomAdapterCustomerList(customerList, context);
                 listCustomer.setAdapter(cAcL);
-
-                inputSearch.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                        //
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        //MainActivity.this.adapter.getFilter().filter(s);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                    }
-                });
 
                 listCustomer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
