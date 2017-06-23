@@ -3,14 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <ListView
         android:id="@+id/simpleListView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:divider="@color/material_blue_grey_800"
         android:dividerHeight="1dp"
-        android:padding="16dp"
+        android:padding="@dimen/activity_horizontal_margin"
         android:footerDividersEnabled="false" />
 </LinearLayout>

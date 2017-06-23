@@ -1,8 +1,5 @@
 package com.example.smp.aquasmart;
 
-/**
- * Created by Manjiri on 5/14/2017.
- */
 import android.util.Log;
 
 import org.apache.http.HttpEntity;
@@ -27,7 +24,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 /**
- * Created by anupamchugh on 29/08/16.
+ * Created by Dipak on 5/14/17.
  */
 public class JSONParser {
 

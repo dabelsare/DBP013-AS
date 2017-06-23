@@ -1,54 +1,37 @@
 package com.example.smp.aquasmart;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TextView;
-
 import java.util.Calendar;
-
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-
-import android.widget.DatePicker;
-import android.widget.Toast;
 
 public class Transaction extends AppCompatActivity {
     EditText qty, rate,paymentReceived,
             paymentBalance,returnQty;
     Button saveTransaction,ClearTrans,Cus,Trans,LogOt;
-    static final int Dialog_Id=0;
     String URL1= "http://smartbizit.com/aquasmart/transaction_add.php";
+    String transURL="http://smartbizit.com/aquasmart/transaction_single.php";
     JSONParser jsonParser = new JSONParser();
     int i=0;float amount=0;
     String customer_id ="1",user_id="1",amt="",jarType="Jar",
@@ -56,7 +39,6 @@ public class Transaction extends AppCompatActivity {
     RadioGroup radioJarType,radioCashType,radioReturnType;
     RadioButton radioCash,radioCredit,radioReturnJar;
 
-    private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView,c_nameV,balanceV,remain_jarV,remain_bottleV;
     private int year, month, day;
@@ -65,8 +47,6 @@ public class Transaction extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         dateView = (TextView) findViewById(R.id.textView3);
         calendar = Calendar.getInstance();
@@ -75,16 +55,6 @@ public class Transaction extends AppCompatActivity {
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
         showDate(year, month+1, day);
-
-        //Spinner spinner = (Spinner) findViewById(R.id.jar_type_spinner);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.jar_type_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        //spinner.setAdapter(adapter);
-
 
         ClearTrans=(Button)findViewById(R.id.btnTransClear);
         Cus=(Button)findViewById(R.id.btnCustomersinTrans);
@@ -101,22 +71,13 @@ public class Transaction extends AppCompatActivity {
         radioCredit=(RadioButton)findViewById(R.id.rbtCredit);
         radioReturnJar=(RadioButton)findViewById(R.id.rbtRtnJar);
         Intent i=getIntent();
-
         customer_id=i.getStringExtra("customerId");
-        c_name=i.getStringExtra("c_name");
-        balance=i.getStringExtra("balance");
-        remain_jar=i.getStringExtra("remain_jar");
-        remain_bottle=i.getStringExtra("remain_bottle");
+        new GetHttpResponseTra(this).execute();
 
         c_nameV = (TextView) findViewById(R.id.txtCName);
         balanceV = (TextView) findViewById(R.id.txtBalance);
         remain_jarV = (TextView) findViewById(R.id.txtRemainJar);
         remain_bottleV = (TextView) findViewById(R.id.txtRemainBottle);
-
-        c_nameV.setText(c_name);
-        balanceV.setText(balance);
-        remain_jarV.setText(remain_jar);
-        remain_bottleV.setText(remain_bottle);
 
         saveTransaction.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,14 +199,11 @@ public class Transaction extends AppCompatActivity {
                 returnQty.setText("");
             }
         });
-
-
     }
 
     @SuppressWarnings("deprecation")
     public void setDate(View view) {
         showDialog(999);
-        //Toast.makeText(getApplicationContext(), "ca",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -317,7 +275,6 @@ public class Transaction extends AppCompatActivity {
         }
 
         protected void onPostExecute(JSONObject result) {
-
             // dismiss the dialog once product deleted
             try {
                 if (result.getString("success").equals("null")) {
@@ -331,6 +288,82 @@ public class Transaction extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
 
+    private class GetHttpResponseTra extends AsyncTask<Void, Void, Void>
+    {
+        private Context context;
+        String result;
+        public GetHttpResponseTra(Context context)
+        {
+            this.context = context;
+        }
+
+        @Override
+        protected void onPreExecute()
+        {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0)
+        {
+            HttpServicesClass httpService = new HttpServicesClass(transURL+"?id="+customer_id);
+            try
+            {
+                httpService.ExecutePostRequest();
+
+                if(httpService.getResponseCode() == 200)
+                {
+                    result = httpService.getResponse();
+                    Log.d("Result", result);
+                    if(result != null)
+                    {
+                        JSONArray jsonArray = null;
+                        try {
+                            jsonArray = new JSONArray(result);
+                            JSONObject object;
+                            for(int i=0; i<jsonArray.length(); i++)
+                            {
+                                object = jsonArray.getJSONObject(i);
+                                customer_id=object.getString("customer_id");
+                                c_name=object.getString("name");
+                                balance=object.getString("balance");
+                                remain_jar=object.getString("Remain_Jar");
+                                remain_bottle=object.getString("Remain_Bottle");
+                            }
+                        }
+                        catch (JSONException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                else
+                {
+                    Toast.makeText(context, httpService.getErrorMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch (Exception e)
+            {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result)
+        {
+            if(c_name != null)
+            {
+                c_nameV.setText(c_name);
+                balanceV.setText(balance);
+                remain_jarV.setText(remain_jar);
+                remain_bottleV.setText(remain_bottle);
+            }else {
+                Toast.makeText(getApplicationContext(),"Can't retrieve customer info",Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

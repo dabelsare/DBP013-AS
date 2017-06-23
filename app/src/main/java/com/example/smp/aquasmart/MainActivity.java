@@ -16,9 +16,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.text.TextWatcher;
 
@@ -27,8 +25,6 @@ public class MainActivity extends Activity {
     ListView listCustomer;
 
     List<Customer> customerList;
-
-    //    ArrayAdapter<String> adapter;
     EditText inputSearch;
     String serverURL="http://smartbizit.com/aquasmart/customers.php";
 
@@ -70,7 +66,6 @@ public class MainActivity extends Activity {
                 startActivity(i);
             }
         });
-
 
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -124,7 +119,6 @@ public class MainActivity extends Activity {
                             jsonArray = new JSONArray(result);
 
                             JSONObject object;
-//                            JSONArray array;
                             Customer customer;
                             customerList = new ArrayList<Customer>();
                             for(int i=0; i<jsonArray.length(); i++)
@@ -168,21 +162,19 @@ public class MainActivity extends Activity {
             listCustomer.setVisibility(View.VISIBLE);
             if(customerList != null)
             {
-//                CustomAdapterCustomerList cAcL = new CustomAdapterCustomerList(customerList, context);
-//                listCustomer.setAdapter(cAcL);
-
                 mCustomAdapter = new CustomAdapterCustomerList(customerList,context);
                 listCustomer.setAdapter(mCustomAdapter);
 
                 listCustomer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                        //Toast.makeText(getApplicationContext(),""+mCustomAdapter.valueList.get(position).name,Toast.LENGTH_LONG).show();
                         Intent intent=new Intent(MainActivity.this,Transaction.class);
-                        intent.putExtra("customerId",customerList.get(position).customer_id.toString());
-                        intent.putExtra("c_name",customerList.get(position).name.toString());
-                        intent.putExtra("balance",customerList.get(position).balance.toString());
-                        intent.putExtra("remain_jar",customerList.get(position).remain_jar.toString());
-                        intent.putExtra("remain_bottle",customerList.get(position).remain_bottle.toString());
+                        intent.putExtra("customerId",mCustomAdapter.valueList.get(position).customer_id.toString());
+//                        intent.putExtra("c_name",mCustomAdapter.valueList.get(position).name.toString());
+//                        intent.putExtra("balance",mCustomAdapter.valueList.get(position).balance.toString());
+//                        intent.putExtra("remain_jar",mCustomAdapter.valueList.get(position).remain_jar.toString());
+//                        intent.putExtra("remain_bottle",mCustomAdapter.valueList.get(position).remain_bottle.toString());
                         startActivity(intent);
                     }
                 });
@@ -191,11 +183,11 @@ public class MainActivity extends Activity {
                     public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                                                    int pos, long id) {
                         Intent intent=new Intent(MainActivity.this,CustomerAdd.class);
-                        intent.putExtra("customerId",customerList.get(pos).customer_id.toString());
-                        intent.putExtra("c_name",customerList.get(pos).name.toString());
-                        intent.putExtra("address",customerList.get(pos).address.toString());
-                        intent.putExtra("mobile",customerList.get(pos).mobile.toString());
-                        intent.putExtra("deposit",customerList.get(pos).deposit.toString());
+                        intent.putExtra("customerId",mCustomAdapter.valueList.get(pos).customer_id.toString());
+                        intent.putExtra("c_name",mCustomAdapter.valueList.get(pos).name.toString());
+                        intent.putExtra("address",mCustomAdapter.valueList.get(pos).address.toString());
+                        intent.putExtra("mobile",mCustomAdapter.valueList.get(pos).mobile.toString());
+                        intent.putExtra("deposit",mCustomAdapter.valueList.get(pos).deposit.toString());
                         startActivity(intent);
                         return true;
                     }

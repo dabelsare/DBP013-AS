@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,12 +19,13 @@ import java.util.List;
     Context context;
     LayoutInflater inflter;
     List<Customer> valueList;
-    private List<Customer> mDataFiltered;//the filtered data
+    private List<Customer> mDataTemp;//the temp data
 
     public CustomAdapterCustomerList(List<Customer> listValue, Context context) {
         super();
         this.context = context;
         this.valueList = listValue;
+        this.mDataTemp=listValue;
         inflter = (LayoutInflater.from(context));
         getFilter();
     }
@@ -68,24 +68,34 @@ import java.util.List;
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults results = new FilterResults();
-                if (constraint == null || constraint.length() == 0) {
-                    //no constraint given, just return all the data. (no search)
-                    results.count = valueList.size();
-                    results.values = valueList;
-                } else {//do the search
-                    List<Customer> resultsData = new ArrayList<>();
-                    String searchStr = constraint.toString().toUpperCase();
-                    for (Customer o : valueList)
-                        if (o.name.toUpperCase().startsWith(searchStr)) resultsData.add(o);
-                    results.count = resultsData.size();
-                    results.values = resultsData;
+                if(constraint!="" && constraint.length()>0) {
+                    ArrayList<Customer> filterList = new ArrayList<Customer>();
+                    for (int i = 0; i < valueList.size(); i++) {
+                        if ((valueList.get(i).name.toUpperCase())
+                                .contains(constraint.toString().toUpperCase())) {
+                            Customer contacts = new Customer();
+                            contacts.setCustomer_id(valueList.get(i).customer_id);
+                            contacts.setName(valueList.get(i).name);
+                            contacts.setAddress(valueList.get(i).address);
+                            contacts.setMobile(valueList.get(i).mobile);
+                            contacts.setDeposit(valueList.get(i).deposit);
+                            filterList.add(contacts);
+                        }
+                    }
+                    results.count=filterList.size();
+                    results.values=filterList;
+                }else{
+                    synchronized (this) {
+                        results.count = mDataTemp.size();
+                        results.values = mDataTemp;
+                    }
                 }
                 return results;
             }
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                mDataFiltered = (ArrayList<Customer>) results.values;
+                valueList = (ArrayList<Customer>) results.values;
                 notifyDataSetChanged();
             }
         };

@@ -1,31 +1,20 @@
 package com.example.smp.aquasmart;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.os.AsyncTask;
-
-import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.net.URI;
 import java.util.ArrayList;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 public class LoginActivity extends AppCompatActivity {
-    EditText editEmail, editPassword, editName;
+    EditText editPassword, editName;
     Button btnSignIn;
 
     String URL= "http://smartbizit.com/aquasmart/index.php";

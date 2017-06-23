@@ -43,7 +43,6 @@ public class CustomerAdd extends AppCompatActivity {
         Intent i=getIntent();
         //UserName=i.getStringExtra("UserName");
 
-
         c_id = i.getStringExtra("customerId");
         txtUname.setText("Welcome "+UserName);
 
@@ -84,10 +83,17 @@ public class CustomerAdd extends AppCompatActivity {
         AddCus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               //Toast.makeText(getApplicationContext(),"This is click"+c_id,Toast.LENGTH_LONG).show();
-               AddCustomer addCus= new AddCustomer();
-               addCus.execute(FullName.getText().toString(),Mobile.getText().toString(),
-                       Address.getText().toString(),Deposit.getText().toString(),compid,c_id);
+                String name = FullName.getText().toString();
+                if(name!="")
+                {
+                    AddCustomer addCus= new AddCustomer();
+                    addCus.execute(FullName.getText().toString(),Mobile.getText().toString(),
+                            Address.getText().toString(),Deposit.getText().toString(),compid,c_id);
+                }else
+                {
+                    Toast.makeText(getApplicationContext(),"Please enter customer name",Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -131,7 +137,6 @@ public class CustomerAdd extends AppCompatActivity {
         }
 
         protected void onPostExecute(JSONObject result) {
-
             // dismiss the dialog once product deleted
             try {
                 if (result.getString("success").equals("null")) {

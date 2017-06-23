@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+<LinearLayout
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
@@ -37,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:weightSum="4.0">
 
             <TextView
@@ -44,6 +50,7 @@
                 android:layout_height="match_parent"
                 android:text="Customer"
                 android:layout_weight="1.0"
+                android:textAlignment="center"
                 android:textColor="#000" />
 
             <TextView
@@ -51,18 +58,21 @@
                 android:layout_height="match_parent"
                 android:text="Balance"
                 android:layout_weight="1.0"
+                android:textAlignment="center"
                 android:textColor="#000" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="R-Jar"
                 android:layout_weight="1.0"
+                android:textAlignment="center"
                 android:textColor="#000" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="R-Bottle"
                 android:layout_weight="1.0"
+                android:textAlignment="center"
                 android:textColor="#000" />
         </LinearLayout>
 
@@ -70,6 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:weightSum="4.0">
 
             <TextView
@@ -85,18 +96,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.0"
+                android:textAlignment="center"
                 android:textColor="#000" />
             <TextView
                 android:id="@+id/txtRemainJar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.0"
+                android:textAlignment="center"
                 android:textColor="#000" />
             <TextView
                 android:id="@+id/txtRemainBottle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
+                android:textAlignment="center"
                 android:textColor="#000" />
         </LinearLayout>
 
@@ -104,9 +118,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/activity_horizontal_margin"
         android:weightSum="1">
 
         <TextView
@@ -134,7 +146,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
                 android:onClick="setDate"
                 android:text="@string/date_button_set" />
 
@@ -157,7 +168,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Select Jar Type"
-                android:layout_marginTop="20dp"
+                android:layout_margin="@dimen/activity_horizontal_margin"
                 android:textStyle="bold"
                 android:textSize="14dp"
                 android:singleLine="true"
@@ -167,7 +178,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:paddingLeft="10dp"
                 android:gravity="left" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
@@ -176,9 +186,8 @@
                 android:orientation="horizontal"
                 android:id="@+id/radioBtnGroupJarType"
                 android:weightSum="1"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="24dp">
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                >
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -200,23 +209,23 @@
             </RadioGroup>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2.0"
+            >
             <EditText
-                android:layout_width="187dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Quantity"
                 android:id="@+id/edtQty"
+                android:layout_weight="1.0"
                 android:inputType="numberDecimal"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal"
-                android:paddingLeft="24dp"
                 android:paddingRight="24dp"
                 />
 
             <EditText
-                android:layout_width="188dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/edtRate"
                 android:hint="Rate"
@@ -225,7 +234,8 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/edtQty"
                 android:paddingLeft="24dp"
-                android:paddingRight="24dp" />
+                android:layout_weight="1.0"
+                />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -236,7 +246,7 @@
                 android:id="@+id/SelectPaytype"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Select Payment Type"
+                android:text="Payment Type"
                 android:textStyle="bold"
                 android:textSize="14dp"
                 android:singleLine="true"
@@ -280,39 +290,41 @@
             </RadioGroup>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:layout_weight="2.0"
+            >
             <EditText
-                android:layout_width="191dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/edtPaymentReceived"
                 android:hint="Pay Received"
                 android:inputType="number"
-                android:paddingLeft="24dp"
+                android:layout_weight="1.0"
                 android:paddingRight="24dp"/>
 
             <EditText
-                android:layout_width="193dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/edtPaymentBalance"
                 android:hint="Pay Balance"
                 android:inputType="number"
                 android:layout_alignTop="@+id/edtPaymentReceived"
-                android:paddingLeft="24dp"
+                android:layout_weight="1.0"
                 android:paddingRight="24dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            >
             <TextView
                 android:id="@+id/SelectReturnJartype"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Return-Jar Type"
+                android:text="R-Jar Type"
                 android:textStyle="bold"
                 android:textSize="14dp"
                 android:singleLine="true"
@@ -322,7 +334,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:paddingLeft="10dp"
                 android:gravity="left" />
 
             <RadioButton
@@ -347,40 +358,41 @@
                 android:orientation="horizontal"
                 android:id="@+id/radioReturnType"
                 android:text="Return Type"
-                android:weightSum="1"
                 android:layout_alignParentTop="true"
                 android:paddingLeft="10dp"
                 android:paddingRight="24dp">
 
             </RadioGroup>
             <EditText
-                android:layout_width="94dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/edtReturnQty"
-                android:hint="Qty"
+                android:hint="Quantity"
                 android:inputType="number"
                 android:layout_below="@+id/edtPaymentBalance"
-                android:paddingLeft="24dp"
-                android:paddingRight="24dp"/>
+                />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="30dp">
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            >
             <Button
-                android:layout_width="156dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Save"
                 android:textAlignment="center"
+                android:layout_marginRight="10dp"
                 android:id="@+id/btnTransactionSave"
                 android:layout_below="@+id/edtReturnQty"
                 android:background="@drawable/background_round_corner_edittext"
-                android:layout_marginLeft="24dp" />
+                />
 
             <Button
-                android:layout_width="156dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Clear"
                 android:textAlignment="center"
@@ -388,8 +400,8 @@
                 android:layout_below="@+id/edtReturnQty"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/background_round_corner_edittext"
-                android:layout_marginLeft="24dp"/>
+                />
         </LinearLayout>
-
     </LinearLayout>
 </LinearLayout>
+</ScrollView>
