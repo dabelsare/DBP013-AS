@@ -23,7 +23,7 @@ import java.util.List;
 public class Transaction_List extends Activity {
     Button Cust,AddCust,LogOt;
     ListView simpleList;
-    String transURL="http://smartbizit.com/aquasmart/transaction_list.php";
+    String transURL="http://smartbizit.com/aquasmart/transaction_history.php";
     EditText editSearch;
     List<TransactionClass> transList;
 
@@ -86,7 +86,6 @@ public class Transaction_List extends Activity {
 
     }
 
-
     private class GetHttpResponse extends AsyncTask<Void, Void, Void>
     {
         private Context context;
@@ -129,10 +128,13 @@ public class Transaction_List extends Activity {
                                 object = jsonArray.getJSONObject(i);
                                 //trans.transaction_id=object.getString("transaction_id");
                                 trans.customer_name = object.getString("name");
-                                trans.mobile = object.getString("mobile");
+                                trans.date = object.getString("date");
+                                trans.d_jar_type = object.getString("jar_type");
+                                trans.d_qty = object.getString("qty");
+                                trans.d_qty = object.getString("qty");
                                 trans.balance = object.getString("balance");
-                                trans.remain_jar = object.getString("Remain_Jar");
-                                trans.remain_bottle = object.getString("Remain_Bottle");
+                                trans.r_jar_type = object.getString("return_jar_type");
+                                trans.r_qty = object.getString("return_qty");
                                 transList.add(trans);
                             }
                         }

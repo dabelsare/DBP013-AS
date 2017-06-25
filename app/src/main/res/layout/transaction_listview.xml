@@ -4,9 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:layout_weight="4.0"
+    android:layout_weight="7.0"
     >
-
     <TextView
         android:id="@+id/textViewName"
         android:layout_width="match_parent"
@@ -14,7 +13,27 @@
         android:padding="@dimen/activity_horizontal_margin"
         android:layout_weight="1.0"
         android:textColor="#000" />
-
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:layout_weight="1.0"
+        android:textColor="#000" />
+    <TextView
+        android:id="@+id/textViewDJar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:layout_weight="1.0"
+        android:textColor="#000" />
+    <TextView
+        android:id="@+id/textViewDQty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:layout_weight="1.0"
+        android:textColor="#000" />
     <TextView
         android:id="@+id/textViewBalance"
         android:layout_width="match_parent"
@@ -23,14 +42,14 @@
         android:layout_weight="1.0"
         android:textColor="#000" />
     <TextView
-        android:id="@+id/txtVRemainJar"
+        android:id="@+id/txtVRJarType"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.0"
         android:padding="@dimen/activity_horizontal_margin"
         android:textColor="#000" />
     <TextView
-        android:id="@+id/txtVRemainBottle"
+        android:id="@+id/txtVRQty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/activity_horizontal_margin"

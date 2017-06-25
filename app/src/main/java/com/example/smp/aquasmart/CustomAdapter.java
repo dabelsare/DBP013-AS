@@ -50,17 +50,21 @@ public class CustomAdapter extends BaseAdapter implements Filterable{
         view = inflter.inflate(R.layout.transaction_listview, null);
         //TextView trans_id = (TextView) view.findViewById(R.id.textView);
         TextView name = (TextView) view.findViewById(R.id.textViewName);
-        //TextView mobile = (TextView) view.findViewById(R.id.textViewMobile);
+        TextView date = (TextView) view.findViewById(R.id.textViewDate);
+        TextView d_jar_type = (TextView) view.findViewById(R.id.textViewDJar);
+        TextView d_qty = (TextView) view.findViewById(R.id.textViewDQty);
         TextView balance = (TextView) view.findViewById(R.id.textViewBalance);
-        TextView jar = (TextView) view.findViewById(R.id.txtVRemainJar);
-        TextView bottle = (TextView) view.findViewById(R.id.txtVRemainBottle);
+        TextView r_jar_type = (TextView) view.findViewById(R.id.txtVRJarType);
+        TextView r_qty = (TextView) view.findViewById(R.id.txtVRQty);
 
         //trans_id.setText(valueList.get(i).transaction_id);
         name.setText(valueList.get(i).customer_name);
-        //mobile.setText(valueList.get(i).mobile);
+        date.setText(valueList.get(i).date);
+        d_jar_type.setText(valueList.get(i).d_jar_type);
+        d_qty.setText(valueList.get(i).d_qty);
         balance.setText(valueList.get(i).balance);
-        jar.setText(valueList.get(i).remain_jar);
-        bottle.setText(valueList.get(i).remain_bottle);
+        r_jar_type.setText(valueList.get(i).r_jar_type);
+        r_qty.setText(valueList.get(i).r_qty);
         return view;
     }
 
@@ -78,9 +82,12 @@ public class CustomAdapter extends BaseAdapter implements Filterable{
                             TransactionClass transactionClass = new TransactionClass();
 //                            transactionClass.setTransaction_id(valueList.get(i).transaction_id);
                             transactionClass.setCustomer_name(valueList.get(i).customer_name);
+                            transactionClass.setDate(valueList.get(i).date);
+                            transactionClass.setD_jar_type(valueList.get(i).d_jar_type);
+                            transactionClass.setD_qty(valueList.get(i).d_qty);
                             transactionClass.setBalance(valueList.get(i).balance);
-                            transactionClass.setRemain_jar(valueList.get(i).remain_jar);
-                            transactionClass.setRemain_bottle(valueList.get(i).remain_bottle);
+                            transactionClass.setR_jar_type(valueList.get(i).r_jar_type);
+                            transactionClass.setR_qty(valueList.get(i).r_qty);
                             filterList.add(transactionClass);
                         }
                     }

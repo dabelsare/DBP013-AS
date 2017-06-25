@@ -49,42 +49,77 @@
             android:hint="Search transaction here"
             />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:orientation="horizontal"
-        android:weightSum="4">
-
-        <TextView
-            android:id="@+id/textViewNameHeader"
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Customer"
-            android:layout_weight="1.0"
-            android:textColor="#000" />
-
-        <TextView
-            android:id="@+id/textViewBalanceHeader"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Balance"
-            android:layout_weight="1.0"
-            android:textColor="#000" />
-        <TextView
-            android:id="@+id/textViewRemainJar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="R-Jar"
-            android:layout_weight="1.0"
-            android:textColor="#000" />
-        <TextView
-            android:id="@+id/textViewRemainBottle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="R-Bottle"
-            android:layout_weight="1.0"
-            android:textColor="#000" />
-    </LinearLayout>
-    <include layout="@layout/content_transaction__list" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="7">
+            <TextView
+                android:id="@+id/textViewNameHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Customer"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_weight="1.0"
+                android:textColor="#000" />
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Date"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_weight="1.0"
+                android:textColor="#000" />
+            <TextView
+                android:id="@+id/textViewDJar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Type"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_weight="1.0"
+                android:textColor="#000" />
+            <TextView
+                android:id="@+id/textViewDQty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Qty"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_weight="1.0"
+                android:textColor="#000" />
+            <TextView
+                android:id="@+id/textViewBalanceHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Balance"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_weight="1.0"
+                android:textColor="#000" />
+            <TextView
+                android:id="@+id/textViewRJarType"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="R_Type"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_weight="1.0"
+                android:textColor="#000" />
+            <TextView
+                android:id="@+id/textViewRQty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="R_Qty"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_weight="1.0"
+                android:textColor="#000" />
+            </LinearLayout>
+            <include layout="@layout/content_transaction__list" />
+        </LinearLayout>
+    </HorizontalScrollView>
 </LinearLayout>
