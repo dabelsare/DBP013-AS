@@ -34,6 +34,7 @@ public class Transaction_List extends Activity {
     private Calendar calendar;
     private TextView dateView,dateViewTo;
     private int year, month, day;
+    int dialogValue=0;
 
     private CustomAdapter mCustomAdapterTran;
     @Override
@@ -42,7 +43,7 @@ public class Transaction_List extends Activity {
         setContentView(R.layout.activity_transaction__list);
 
         dateView = (TextView) findViewById(R.id.txtFromDate);
-//        dateViewTo = (TextView) findViewById(R.id.txtToDate);
+       dateViewTo = (TextView) findViewById(R.id.txtToDate);
 
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
@@ -107,18 +108,21 @@ public class Transaction_List extends Activity {
 
     @SuppressWarnings("deprecation")
     public void setDate(View view) {
-        showDialog(999);
+        dialogValue=0;
+        showDialog(dialogValue);
     }
 
-//    @SuppressWarnings("deprecation")
-//    public void setDateTo(View view) {
-//        showDialog(999);
-//    }
+
+    @SuppressWarnings("deprecation")
+    public void setDateTo(View view) {
+        dialogValue=1;
+        showDialog(dialogValue);
+    }
 
     @Override
     protected Dialog onCreateDialog(int id) {
         // TODO Auto-generated method stub
-        if (id == 999) {
+        if (id == 0||id==1) {
             return new DatePickerDialog(this,
                     myDateListener, year, month, day);
         }
@@ -139,8 +143,13 @@ public class Transaction_List extends Activity {
             };
 
     private void showDate(int year, int month, int day) {
-        dateView.setText(new StringBuilder().append(day).append("/")
-                .append(month).append("/").append(year));
+        if(dialogValue==0) {
+            dateView.setText(new StringBuilder().append(day).append("/")
+                    .append(month).append("/").append(year));
+        }else if(dialogValue==1){
+            dateViewTo.setText(new StringBuilder().append(day).append("/")
+                    .append(month).append("/").append(year));
+        }
     }
 
 //    private void showDateTo(int year, int month, int day) {
